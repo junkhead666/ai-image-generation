@@ -1,0 +1,307 @@
+✅ FINAL README.md (Copy–Paste Exactly)
+# 🎨 AI Image Generator – Stable Diffusion (Open-Source)
+
+This project is a complete **Text-to-Image Generation System** built using  
+**Stable Diffusion v1.5**, **Diffusers**, **PyTorch**, and **Streamlit**.  
+
+It converts natural language prompts into high-quality AI-generated images with  
+support for style selection, negative prompts, quality enhancement, multiple 
+output images, and ZIP export.
+
+This project was developed as part of the **ML Internship Task** for Talrn.com.
+
+---
+
+# 🚀 Features
+
+### 🧠 Text-to-Image Generation
+- Generate images using Stable Diffusion (open-source).
+- Runs fully locally on GPU/CPU.
+
+### 🎨 Style Control
+Choose from multiple creative styles:
+- Photorealistic  
+- Cinematic  
+- Artistic  
+- Cartoon  
+- Anime  
+
+### 🛠 Prompt Enhancement
+Optional quality boosters:
+- *4K resolution, highly detailed, ultra realistic, professional lighting*
+
+### ❌ Negative Prompts
+Improve image quality by removing:
+- blur, text, watermark, deformation, noise
+
+### ⚙ Hardware Support
+- **GPU (CUDA)** – fast inference  
+- **CPU fallback** – slower but compatible  
+
+### 💾 Image Export
+- Automatic saving with timestamp
+- Download all images in a **ZIP file**
+- Clean folder structure for outputs
+
+---
+
+# 🧩 Architecture
+
+
+
+User Prompt ──► Streamlit UI
+│
+▼
+Stable Diffusion (Diffusers)
+│
+▼
+Image Generation Pipeline
+│
+▼
+Display Preview + Save Files
+│
+▼
+ZIP Export & Output Storage
+
+
+---
+
+# 📁 Repository Structure
+
+
+
+ai-image-generator/
+│── streamlit_app.py # Main Streamlit application
+│── requirements.txt # Dependencies
+│── README.md # Project documentation
+│── generated_images/ # Sample and generated outputs
+│── .gitignore # Ignore venv, cache, and secrets
+
+
+---
+
+# 🛠 Installation & Setup
+
+### **1. Clone the repository**
+```bash
+git clone https://github.com/junkhead666/ai-image-generator.git
+cd ai-image-generator
+
+2. Create a virtual environment
+python -m venv venv
+.\venv\Scripts\activate    # Windows
+
+3. Install PyTorch
+
+GPU (CUDA 12.1):
+
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+
+CPU-only:
+
+pip install torch torchvision torchaudio
+
+4. Install dependencies
+pip install -r requirements.txt
+
+📥 Model Download Instructions
+
+Stable Diffusion v1.5 is downloaded automatically by the Diffusers library.
+
+However, Hugging Face requires a Personal Access Token (read access).
+
+IMPORTANT:
+
+You must set your HF token locally:
+
+Windows PowerShell
+
+setx HF_TOKEN "hf_xxxxxxxxxxxxxxxxx"
+
+
+Linux/Mac
+
+export HF_TOKEN="hf_xxxxxxxxxxxxxxxx"
+
+
+Inside the code, you should load it as:
+
+import os
+token = os.getenv("HF_TOKEN")
+
+⚠ Security Note (Hugging Face Token)
+
+Your Hugging Face token is PERSONAL and MUST NOT be shared publicly.
+
+Hugging Face explicitly warns:
+
+“Never publish your token. Never upload it to GitHub.”
+
+This means:
+
+❌ Do NOT hardcode your token in Python files
+
+❌ Do NOT commit your token in the repository
+
+✔ Store it only as an environment variable
+
+✔ Add .env or any token file to .gitignore
+
+Your uploaded GitHub repo must not contain your token at all.
+
+🖥 Usage
+
+Run the Streamlit app:
+
+streamlit run streamlit_app.py
+
+Workflow:
+
+Enter a text prompt
+
+Choose style (optional)
+
+Add negative prompt (optional)
+
+Select number of images
+
+Click Generate Images
+
+Preview results
+
+Download ZIP
+
+Everything is saved inside generated_images/.
+
+✨ Example Prompts
+
+Photorealistic:
+
+a futuristic city at sunset, ultra realistic, 4k, cinematic lighting
+
+Anime:
+
+anime-style girl standing near a cherry blossom tree, vibrant colors
+
+Artistic:
+
+digital art of a dragon soaring above ancient ruins, high detail
+
+🧰 Technology Stack
+
+Python 3.9+
+
+Streamlit – Web interface
+
+PyTorch – Backend engine
+
+Diffusers (Hugging Face) – Stable Diffusion pipeline
+
+CUDA (optional) – GPU acceleration
+
+Pillow – Image handling
+
+Zipfile – Export functionality
+
+🧠 Model Details
+
+This project uses:
+
+➤ Stable Diffusion v1.5
+
+1 billion parameters
+
+Latent diffusion model
+
+Trained on LAION-5B image-text pairs
+
+Fast and flexible for local generation
+
+The model performs progressive denoising to turn random noise into an image based on your prompt.
+
+🎯 Prompt Engineering Tips
+✔ Be descriptive
+
+More details → better results
+
+✔ Use stylistic keywords
+
+cinematic lighting
+
+ultra sharp
+
+photorealistic
+
+concept art
+
+soft shadows
+
+✔ Use negative prompts to avoid issues
+lowres, blurry, watermark, distorted, extra limbs
+
+✔ Add camera and lighting terms
+
+35mm lens
+
+volumetric lighting
+
+studio shot
+
+⚡ Limitations
+
+CPU mode is slow
+
+High VRAM usage (4GB min, 8GB recommended)
+
+Occasionally generates artifacts
+
+Not suitable for generating real faces without ethical risk
+
+Prompt quality heavily affects results
+
+🔮 Future Scope & Enhancements
+1. Support for SDXL & FLUX
+
+Better detail, composition, and realism.
+
+2. LoRA Fine-Tuning
+
+Train custom styles without full model training.
+
+3. Image-to-Image (Img2Img)
+
+Edit existing photos using Stable Diffusion.
+
+4. Inpainting / Outpainting
+
+Remove objects or extend images beyond borders.
+
+5. Background Replacement
+
+Combine segmentation + diffusion.
+
+6. Prompt Templates & History
+
+Save and reuse prompts.
+
+7. Seed Control
+
+Reproduce the exact same image.
+
+8. Authentication + Multi-User
+
+Deploy version with login system.
+
+9. Safety Filters
+
+NSFW / harmful content detection.
+
+10. Docker & Cloud Deployment
+
+Push to Hugging Face Spaces or Render.
+
+👤 Author
+
+Aditya Kadimdiwan
+Email: adityadiwan666@gmail.com
